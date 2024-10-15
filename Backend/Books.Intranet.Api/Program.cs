@@ -23,7 +23,21 @@ app.MapGet("/weatherforecast", () =>
             summaries[Random.Shared.Next(summaries.Length)]
         ))
         .ToArray();
+
     return forecast;
+});
+
+app.MapGet("/employees", () =>
+{
+    var employees = Enumerable.Range(1, 2).Select(index =>
+
+
+    new Employee(
+        index == 1 ? "Jack" : "Joe",
+        index * 10 + 7)
+    ).ToArray();
+
+    return employees;
 });
 
 app.Run();
@@ -31,4 +45,10 @@ app.Run();
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
+
+internal record Employee(string name, int age)
+{
+    public string Name => name;
+    public int Age => age;
 }
