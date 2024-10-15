@@ -47,8 +47,14 @@ internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
 
-internal record Employee(string name, int age)
+internal class Employee
 {
-    public string Name => name;
-    public int Age => age;
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Employee(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
 }
